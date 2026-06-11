@@ -1,5 +1,9 @@
-# Ignore generated output folders anywhere in the project
+# Generated output folders anywhere in the project
 **/outputs/
+
+# Slurm log files
+slurm-*.out
+slurm-*.err
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
