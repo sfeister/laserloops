@@ -1,3 +1,6 @@
+# Ignore generated output folders anywhere in the project
+**/outputs/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
