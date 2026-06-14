@@ -2,6 +2,8 @@
 **/outputs/
 
 # Slurm log files
+*.out
+*.err
 slurm-*.out
 slurm-*.err
 
