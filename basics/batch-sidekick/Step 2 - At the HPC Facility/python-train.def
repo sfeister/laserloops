@@ -1,0 +1,61 @@
+# Written by ChatGPT with help from Scott Feister on 2026-07-08.
+#
+# Apptainer definition file for a lightweight Python 3.12 training environment.
+#
+# This image provides software dependencies only.
+# It does not run a training script or workflow command by default.
+#
+# The Python package list is kept in requirements.txt.
+#
+# Build from the directory containing python-train.def and requirements.txt:
+#
+#   mkdir -p containers
+#   sudo apptainer build containers/python-train.sif python-train.def
+#
+# Or, on systems with fakeroot enabled:
+#
+#   mkdir -p containers
+#   apptainer build --fakeroot containers/python-train.sif python-train.def
+#
+# Test:
+#
+#   apptainer test containers/python-train.sif
+#
+# Enter interactively:
+#
+#   apptainer shell containers/python-train.sif
+#
+# Run commands explicitly:
+#
+#   apptainer exec containers/python-train.sif python --version
+#   apptainer exec containers/python-train.sif curl --version
+
+Bootstrap: docker
+From: python:3.12-slim
+
+%files
+    requirements.txt /app/requirements.txt
+
+%post
+    set -e
+
+    apt-get update
+
+    apt-get install -y --no-install-recommends \
+        bash \
+        curl \
+        ca-certificates
+
+    rm -rf /var/lib/apt/lists/*
+
+    python -m pip install --no-cache-dir -r /app/requirements.txt
+
+%environment
+    export PYTHONUNBUFFERED=1
+    export MPLBACKEND=Agg
+
+%test
+    python --version
+    python -m pip --version
+    python -m pip check
+    curl --version
