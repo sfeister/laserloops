@@ -7,28 +7,28 @@
 #
 # The Python package list is kept in requirements.txt.
 #
-# Build from the directory containing python-train.def and requirements.txt:
+# Build from the directory containing basics-batch-sidekick-train.def and requirements.txt:
 #
 #   mkdir -p containers
-#   sudo apptainer build containers/python-train.sif python-train.def
+#   sudo apptainer build containers/basics-batch-sidekick-train.sif basics-batch-sidekick-train.def
 #
 # Or, on systems with fakeroot enabled:
 #
 #   mkdir -p containers
-#   apptainer build --fakeroot containers/python-train.sif python-train.def
+#   apptainer build --fakeroot containers/basics-batch-sidekick-train.sif basics-batch-sidekick-train.def
 #
 # Test:
 #
-#   apptainer test containers/python-train.sif
+#   apptainer test containers/basics-batch-sidekick-train.sif
 #
 # Enter interactively:
 #
-#   apptainer shell containers/python-train.sif
+#   apptainer shell containers/basics-batch-sidekick-train.sif
 #
 # Run commands explicitly:
 #
-#   apptainer exec containers/python-train.sif python --version
-#   apptainer exec containers/python-train.sif curl --version
+#   apptainer exec containers/basics-batch-sidekick-train.sif python --version
+#   apptainer exec containers/basics-batch-sidekick-train.sif curl --version
 
 Bootstrap: docker
 From: python:3.12-slim
