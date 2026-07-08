@@ -1,3 +1,12 @@
+# Apptainer / Singularity container images
+*.sif
+*.simg
+*.img
+
+# Keep container directory, ignore its contents
+containers/*
+!containers/.gitkeep
+
 # Generated output folders anywhere in the project
 **/outputs/
 
